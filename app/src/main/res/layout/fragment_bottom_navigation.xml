@@ -8,13 +8,12 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemGravity="center"
+        app:elevation="8dp"
+        app:compatShadowEnabled="true"
         android:layout_gravity="bottom"
-        android:color="@color/ripple_color"
-        android:background="@android:color/white"
-        style="@style/Widget.App.BottomNavigationView"
+        style="@style/Base.Theme.CoffeeHouse"
         app:itemIconSize="25dp"
-        app:itemIconTint="@color/nav_item_color"
-        app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
