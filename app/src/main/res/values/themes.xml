@@ -19,12 +19,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+
         <!-- Navigation item color switch. -->
         <item name="itemIconTint">@color/nav_item_color</item>
         <item name="itemTextColor">@color/nav_item_color</item>
+
         <!--Fragment's background color-->
         <item name="android:windowBackground">@color/white</item>
         <item name="switchStyle">@style/Widget.Coffee.Switch</item>
+
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -36,6 +41,5 @@
         <item name="thumbTint">@color/switch_thumb_selector</item>
         <item name="trackTint">@color/switch_track_selector</item>
     </style>
-
 
 </resources>
