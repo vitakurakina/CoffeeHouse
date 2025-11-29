@@ -7,4 +7,12 @@
     <string name="Menu">Меню</string>
     <string name="Account">Аккаунт</string>
     <string name="Map">Карта</string>
+
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="app_theme_switch">Поменять тему приложения</string>
+    <string name="User_name">Имя</string>
+    <string name="Users_name">Имя пользователя</string>
+    <string name="Phone_number">Номер телефона</string>
+    <string name="MyData">Мои данные</string>
+    <string name="Settings">Настройки приложения</string>
 </resources>

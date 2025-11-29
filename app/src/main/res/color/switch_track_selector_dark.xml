@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Включено -->
+    <item android:state_checked="true" android:color="@color/ripple_color_lighter"/>
+    <!-- Выключено -->
+    <item android:color="@color/white"/>
+</selector>

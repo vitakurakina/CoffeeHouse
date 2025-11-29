@@ -8,6 +8,12 @@
     <string name="Menu">Menu</string>
     <string name="Account">Account</string>
     <string name="Map">Map</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_theme_switch">To switch the theme</string>
+    <string name="User_name">Name</string>
+    <string name="Users_name">User\'s name</string>
+    <string name="Phone_number">Phone number</string>
+    <string name="MyData">My data</string>
+    <string name="Settings">App\'s settings</string>
 </resources>
