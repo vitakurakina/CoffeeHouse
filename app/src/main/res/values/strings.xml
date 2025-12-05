@@ -26,6 +26,8 @@
     <string name="addToCartDesc">Add item to cart</string>
     <string name="removeFromCartDesc">Delete item from cart</string>
 
+    <string name="imageDescription">The image of item</string>
+
 
 
 </resources>

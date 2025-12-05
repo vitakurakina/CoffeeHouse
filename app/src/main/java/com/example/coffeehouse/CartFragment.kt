@@ -35,13 +35,13 @@ class CartFragment : Fragment() {
         val sharedPref = requireContext().getSharedPreferences("cart_prefs", android.content.Context.MODE_PRIVATE)
         val gson = Gson()
         val cartJson = sharedPref.getString("cart_list", "[]")
-        val type = object : TypeToken<List<MenuDrinksItem>>() {}.type
-        val cartList: List<MenuDrinksItem> = gson.fromJson(cartJson, type)
+        val type = object : TypeToken<List<CartItem>>() {}.type
+        val cartList: List<CartItem> = gson.fromJson(cartJson, type)
 
         if (cartList.isEmpty()) {
             //Toast.makeText(context, "Корзина пуста", Toast.LENGTH_SHORT).show()
         }
 
-        cartAdapter.setItems(cartList as MutableList<MenuDrinksItem>)
+        cartAdapter.setItems(cartList as MutableList<CartItem>)
     }
 }

@@ -23,4 +23,5 @@
 
     <string name="addToCartDesc">Добавить товар в корзину</string>
     <string name="removeFromCartDesc">Удалить товар из корзины</string>
+    <string name="imageDescription">Фото товара</string>
 </resources>

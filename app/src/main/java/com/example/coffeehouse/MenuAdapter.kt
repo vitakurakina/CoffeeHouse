@@ -60,16 +60,23 @@ class MenuAdapter(
         notifyDataSetChanged()
     }
 
-    private fun addToCart(context: Context, item: MenuDrinksItem){
+    private fun addToCart(context: Context, newItem: MenuDrinksItem){
         val sharedPref = context.getSharedPreferences("cart_prefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         val gson = Gson()
         val currentCartJson = sharedPref.getString("cart_list", "[]")
-        val type = object : com.google.gson.reflect.TypeToken<MutableList<MenuDrinksItem>>() {}.type
-        val cartList: MutableList<MenuDrinksItem> = gson.fromJson(currentCartJson, type)
-        cartList.add(item)
-        editor.putString("cart_list", gson.toJson(cartList))
-        editor.apply()
+        val type = object : com.google.gson.reflect.TypeToken<MutableList<CartItem>>() {}.type
+        val cartList: MutableList<CartItem> = gson.fromJson(currentCartJson, type)
+
+        val existingItem = cartList.firstOrNull { it.item.name == newItem.name }
+
+
+        if (existingItem != null) {
+            existingItem.quantity += 1   // ✔ увеличиваем количество
+        } else {
+            cartList.add(CartItem(newItem, 1)) // ✔ добавляем новый CartItem
+        }
+        editor.putString("cart_list", gson.toJson(cartList)).apply()
 
     }
 }
