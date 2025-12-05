@@ -1,6 +1,7 @@
 package com.example.coffeehouse
 
 import android.Manifest
+import android.R.string
 import android.util.Log
 
 import android.os.Bundle
@@ -19,12 +20,14 @@ import retrofit2.Response
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import java.io.File
 
 class MenuFragment : Fragment() {
 
     private lateinit var adapter: MenuAdapter
+
 
     fun Context.isNetworkAvailable(): Boolean {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -65,8 +68,15 @@ class MenuFragment : Fragment() {
             override fun onFailure(call: Call<List<MenuDrinksItem>>, t: Throwable) {
                 if (context?.isNetworkAvailable() == true){
                     Toast.makeText(context, "Ошибка загрузки меню с сервера", Toast.LENGTH_SHORT).show()
-                }else {
                     loadMenuFromJSON()
+                }else {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setTitle(R.string.alert_title)
+                        .setMessage(R.string.alert_message)
+                        .setNeutralButton(R.string.Okay){_,_->
+
+                        }
+                        .show()
                 }
             }
         })

@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private val accountFragment = AccountFragment()
     private val offersFragment = OffersFragment()
     private val mapFragment = MapFragment()
+    private val cartFragment = CartFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,19 +19,20 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_nav_container)
 
-        bottomNavigation.selectedItemId = R.id.nav_home
+        bottomNavigation.selectedItemId = R.id.nav_menu
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, homeFragment)
+            .replace(R.id.fragment_container, menuFragment)
             .commit()
 
         bottomNavigation.setOnItemSelectedListener { item ->
             val selectedFragment = when(item.itemId) {
                 R.id.nav_map -> mapFragment
-                R.id.nav_home -> homeFragment
+                //R.id.nav_home -> homeFragment
                 R.id.nav_menu -> menuFragment
                 R.id.nav_account -> accountFragment
                 R.id.nav_offers -> offersFragment
+                R.id.nav_cart -> cartFragment
                 else -> homeFragment
             }
             supportFragmentManager.beginTransaction()

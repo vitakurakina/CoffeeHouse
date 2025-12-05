@@ -6,6 +6,7 @@
     <string name="Offers">Offers</string>
     <string name="Home">Home</string>
     <string name="Menu">Menu</string>
+    <string name="Cart">Cart</string>
     <string name="Account">Account</string>
     <string name="Map">Map</string>
 
@@ -16,4 +17,15 @@
     <string name="Phone_number">Phone number</string>
     <string name="MyData">My data</string>
     <string name="Settings">App\'s settings</string>
+
+
+    <string name="alert_title">No internet</string>
+    <string name="alert_message">There is no internet connection, and no data is available locally. Please try again later :(</string>
+    <string name="Okay">Ok</string>
+
+    <string name="addToCartDesc">Add item to cart</string>
+    <string name="removeFromCartDesc">Delete item from cart</string>
+
+
+
 </resources>

@@ -12,18 +12,24 @@
         android:icon="@drawable/ic_offer"
         android:enabled="true"
         android:title="@string/Offers"/>
-
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:enabled="true"
-        android:title="@string/Home"/>
-
     <item
         android:id="@+id/nav_menu"
         android:icon="@drawable/ic_menu"
         android:enabled="true"
         android:title="@string/Menu" />
+    <item
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/ic_cart"
+        android:enabled="true"
+        android:title="@string/Cart" />
+
+<!--    <item-->
+<!--        android:id="@+id/nav_home"-->
+<!--        android:icon="@drawable/ic_home"-->
+<!--        android:enabled="true"-->
+<!--        android:title="@string/Home"/>-->
+
+
 
     <item
         android:id="@+id/nav_account"
