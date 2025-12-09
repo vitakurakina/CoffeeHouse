@@ -1,6 +1,6 @@
 package com.example.coffeehouse
 
 data class CartItem(
-    val item: MenuDrinksItem,
+    val item: MenuItem,
     var quantity: Int = 1
 )

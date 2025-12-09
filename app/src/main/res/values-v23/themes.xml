@@ -2,10 +2,10 @@
 
     <style name="Theme.CoffeeHouse" parent="Base.Theme.CoffeeHouse">
         <!-- System bars -->
-<!--        <item name="android:navigationBarColor">?attr/isLightTheme</item>-->
-<!--        <item name="android:statusBarColor">?attr/isLightTheme</item>-->
-<!--        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>-->
-<!--        <item name="trackTint">?attr/isLightTheme</item>-->
-<!--        <item name="thumbTint">?attr/isLightTheme</item>-->
+        <!--        <item name="android:navigationBarColor">?attr/isLightTheme</item>-->
+        <!--        <item name="android:statusBarColor">?attr/isLightTheme</item>-->
+        <!--        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>-->
+        <!--        <item name="trackTint">?attr/isLightTheme</item>-->
+        <!--        <item name="thumbTint">?attr/isLightTheme</item>-->
     </style>
 </resources>

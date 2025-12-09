@@ -24,4 +24,14 @@
     <string name="addToCartDesc">Добавить товар в корзину</string>
     <string name="removeFromCartDesc">Удалить товар из корзины</string>
     <string name="imageDescription">Фото товара</string>
+    <string name="makeAnOrder">Сделать заказ</string>
+    <string name="orders_history">История заказов</string>
+    <string name="CartAlertDialogTitle">Слишком много товаров одного типа</string>
+    <string name="CartAlertDialogMessage">Мы не продадим вам столько. Выберите ещё что-нибудь</string>
+    <string name="cart_is_empty">Корзина пустая</string>
+    <string name="menu_load_error">Ошибка загрузки меню</string>
+    <string name="json_saved">JSON сохранён</string>
+    <string name="json_loaded">JSON загружен</string>
+    <string name="no_offline_data">Нет данных для оффлайн доступа</string>
+    <string name="order_number">Заказ №%d</string>
 </resources>

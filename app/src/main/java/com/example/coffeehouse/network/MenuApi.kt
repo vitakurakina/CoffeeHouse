@@ -1,11 +1,13 @@
 package com.example.coffeehouse.network
 
-import com.example.coffeehouse.MenuDrinksItem
+import com.example.coffeehouse.MenuItem
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface MenuApi {
-    @GET("/menu")
-    fun getMenu(): Call<List<MenuDrinksItem>>
+    @GET("/drinks")
+    fun getMenuDrinks(): Call<List<MenuItem>>
 
+    @GET("/desserts")
+    fun getMenuDesserts(): Call<List<MenuItem>>
 }

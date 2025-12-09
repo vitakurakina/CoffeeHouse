@@ -8,7 +8,7 @@ object RetrofitInstance {
 
     val api: MenuApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://192.168.31.8:5000/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MenuApi::class.java)

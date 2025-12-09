@@ -1,9 +1,10 @@
 package com.example.coffeehouse
 
-data class MenuDrinksItem(
+data class MenuItem(
     val name: String,
     val price: String,
     val description: String,
-    val info: String,
-    val image: String
+    val info: String?=null,
+    val image: String,
+    val category: String
 )

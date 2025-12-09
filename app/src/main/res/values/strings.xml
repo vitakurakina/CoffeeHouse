@@ -21,13 +21,22 @@
 
     <string name="alert_title">No internet</string>
     <string name="alert_message">There is no internet connection, and no data is available locally. Please try again later :(</string>
-    <string name="Okay">Ok</string>
+    <string name="Okay">OK</string>
 
     <string name="addToCartDesc">Add item to cart</string>
     <string name="removeFromCartDesc">Delete item from cart</string>
 
     <string name="imageDescription">The image of item</string>
-
-
+    <string name="makeAnOrder">Make an order</string>
+    <string name="orders_history">Orders history</string>
+    <string name="CartAlertDialogTitle">Too many items</string>
+    <string name="CartAlertDialogMessage">We won\'t sell you that much. Choose something else.</string>
+    <string name="item_quantity" translatable="false">x %d</string>
+    <string name="cart_is_empty">Cart is empty</string>
+    <string name="menu_load_error">Error loading menu</string>
+    <string name="json_saved">JSON saved</string>
+    <string name="json_loaded">JSON loaded</string>
+    <string name="no_offline_data">No data for offline access</string>
+    <string name="order_number">Order №%d</string>
 
 </resources>

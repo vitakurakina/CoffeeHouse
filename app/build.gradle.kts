@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -40,7 +41,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -52,24 +52,21 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.activity)
     implementation(libs.recyclerview)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.android.material:material:1.12.0")
-
-        // Retrofit
-        implementation(libs.retrofit)
-
-        // Gson converter
-        implementation(libs.converter.gson)
-
-        // Glide
-        implementation(libs.glide)
-        kapt("com.github.bumptech.glide:compiler:4.15.1")
-
-        // Coroutines (если нужно)
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
-
-
+    implementation ("com.yandex.android:maps.mobile:4.26.0-lite")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.glide)
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("androidx.core:core-splashscreen:1.0.1")
 }

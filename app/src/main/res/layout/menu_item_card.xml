@@ -58,6 +58,13 @@
                 android:textSize="14sp"
                 android:layout_marginEnd="10dp"
                 android:paddingTop="2dp"/>
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginEnd="10dp"
+                android:paddingTop="2dp"/>
 
             <ImageButton
                 android:id="@+id/addToCart"
@@ -72,13 +79,6 @@
                 android:contentDescription="@string/addToCartDesc"
                 card_view:tint="@color/white" />
 
-<!--            <Button-->
-<!--                android:id="@+id/addToCart"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/addToCartString"-->
-<!--                android:layout_gravity="end"-->
-<!--                />-->
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

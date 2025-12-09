@@ -74,8 +74,12 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ordersHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.CoffeeHouse.MaterialButton"
+            android:text="@string/orders_history"/>
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider

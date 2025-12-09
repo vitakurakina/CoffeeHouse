@@ -1,19 +1,19 @@
 package com.example.coffeehouse
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import androidx.core.content.edit
 
 class MenuAdapter(
-    private var items: List<MenuDrinksItem> = listOf()
+    private var items: List<MenuItem> = listOf()
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
     class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,6 +22,7 @@ class MenuAdapter(
         val descriptionText: TextView = view.findViewById(R.id.textDescription)
         val infoText: TextView = view.findViewById(R.id.textInfo)
         val imageView: ImageView = view.findViewById(R.id.imageDrink)
+        val infoCategory: TextView = view.findViewById<TextView>(R.id.textCategory)
         val addToCartButton: ImageView = view.findViewById(R.id.addToCart)
     }
 
@@ -38,6 +39,7 @@ class MenuAdapter(
         holder.nameText.text = item.name
         holder.priceText.text = item.price
         holder.descriptionText.text = item.description
+        holder.infoCategory.text=item.category
         holder.infoText.text = item.info
 
 
@@ -55,28 +57,30 @@ class MenuAdapter(
         }
     }
 
-    fun setItems(newItems: List<MenuDrinksItem>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(newItems: List<MenuItem>) {
         items = newItems
         notifyDataSetChanged()
     }
 
-    private fun addToCart(context: Context, newItem: MenuDrinksItem){
+    private fun addToCart(context: Context, newItem: MenuItem){
         val sharedPref = context.getSharedPreferences("cart_prefs", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        val gson = Gson()
-        val currentCartJson = sharedPref.getString("cart_list", "[]")
-        val type = object : com.google.gson.reflect.TypeToken<MutableList<CartItem>>() {}.type
-        val cartList: MutableList<CartItem> = gson.fromJson(currentCartJson, type)
+        sharedPref.edit {
+            val gson = Gson()
+            val currentCartJson = sharedPref.getString("cart_list", "[]")
+            val type = object : com.google.gson.reflect.TypeToken<MutableList<CartItem>>() {}.type
+            val cartList: MutableList<CartItem> = gson.fromJson(currentCartJson, type)
 
-        val existingItem = cartList.firstOrNull { it.item.name == newItem.name }
+            val existingItem = cartList.firstOrNull { it.item.name == newItem.name }
 
 
-        if (existingItem != null) {
-            existingItem.quantity += 1   // ✔ увеличиваем количество
-        } else {
-            cartList.add(CartItem(newItem, 1)) // ✔ добавляем новый CartItem
+            if (existingItem != null) {
+                existingItem.quantity += 1
+            } else {
+                cartList.add(CartItem(newItem, 1))
+            }
+            putString("cart_list", gson.toJson(cartList))
         }
-        editor.putString("cart_list", gson.toJson(cartList)).apply()
 
     }
 }

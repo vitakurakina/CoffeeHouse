@@ -1,5 +1,6 @@
 package com.example.coffeehouse
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
+import androidx.core.content.edit
+
 
 class CartAdapter(
     private var items: MutableList<CartItem> = mutableListOf()
@@ -21,7 +24,8 @@ class CartAdapter(
         val priceText: TextView = view.findViewById(R.id.textPrice)
         val imageView: ImageView = view.findViewById(R.id.imageDrink)
         val quantityText: TextView = view.findViewById(R.id.textQuantity)
-        val deleteButton: ImageButton = view.findViewById(R.id.removeFromCart)
+        val removeButton: ImageButton = view.findViewById<ImageButton>(R.id.removeFromCart)
+        val addButton: ImageButton = view.findViewById<ImageButton>(R.id.addToCart)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -33,11 +37,12 @@ class CartAdapter(
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val cartItem = items[position]
+        val context = holder.itemView.context
 
 
         holder.nameText.text = cartItem.item.name
         holder.priceText.text = cartItem.item.price.toString()
-        holder.quantityText.text = "x ${cartItem.quantity}"
+        holder.quantityText.text = context.getString(R.string.item_quantity, cartItem.quantity)
 
         if (cartItem.item.image.isNotEmpty()) {
             Glide.with(holder.imageView.context).load(cartItem.item.image).into(holder.imageView)
@@ -45,19 +50,11 @@ class CartAdapter(
             holder.imageView.setImageResource(R.drawable.jisung)
         }
 
-        holder.deleteButton.setOnClickListener {
+        holder.removeButton.setOnClickListener {
             removeOne(holder.itemView.context, position)
-//            items.removeAt(position)
-//            notifyItemRemoved(position)
-//            notifyItemRangeChanged(position, items.size)
-//
-//            val sharedPref = holder.itemView.context.getSharedPreferences("cart_prefs", Context.MODE_PRIVATE)
-//            val editor = sharedPref.edit()
-//            val gson = Gson()
-//            editor.putString("cart_list", gson.toJson(items))
-//            editor.apply()
-//
-//            Toast.makeText(holder.itemView.context, "Товаров в корзине: ${items.size}", Toast.LENGTH_SHORT).show()
+        }
+        holder.addButton.setOnClickListener {
+            addOne(holder.itemView.context, position)
         }
     }
 
@@ -75,17 +72,44 @@ class CartAdapter(
 
         saveCart(context)
     }
+    private fun addOne(context: Context, position: Int){
+        var cartItem = items[position]
+        if (cartItem.quantity<=9){
+            cartItem.quantity+=1
+            notifyItemChanged(position)
+        } else {
+            MaterialAlertDialogBuilder(context, R.style.CoffeeAlertDialog)
+                .setTitle(R.string.CartAlertDialogTitle)
+                .setMessage(R.string.CartAlertDialogMessage)
+                .setPositiveButton(R.string.Okay){_,_->
+
+                }
+                .show()
+        }
+        saveCart(context)
+    }
 
     private fun saveCart(context: Context) {
         val sharedPref = context.getSharedPreferences("cart_prefs", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        val gson = Gson()
-        editor.putString("cart_list", gson.toJson(items))
-        editor.apply()
+        sharedPref.edit {
+            val gson = Gson()
+            putString("cart_list", gson.toJson(items))
+        }
     }
 
-    fun setItems(newItems: List<CartItem>) {
-        items = newItems.toMutableList()
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(newItems: MutableList<CartItem>) {
+        items = newItems
         notifyDataSetChanged()
     }
+
+    fun getItems(): List<CartItem> = items
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearItems() {
+        items.clear()
+        notifyDataSetChanged()
+    }
+
+
 }

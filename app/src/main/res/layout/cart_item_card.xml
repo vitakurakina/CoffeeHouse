@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="8dp"
     card_view:cardElevation="4dp">
@@ -59,7 +60,6 @@
                 android:textSize="14sp"
                 android:layout_marginEnd="10dp"
                 android:paddingTop="4dp"/>
-
             <TextView
                 android:id="@+id/textInfo"
                 android:layout_width="wrap_content"
@@ -67,24 +67,22 @@
                 android:textSize="14sp"
                 android:layout_marginEnd="10dp"
                 android:paddingTop="2dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+                <ImageButton
+                    android:id="@+id/removeFromCart"
+                    style="@style/Widget.Coffee.IconButton"
+                    android:src="@drawable/ic_minus"
+                    android:layout_marginEnd="5dp"/>
+                <ImageButton
+                    android:id="@+id/addToCart"
+                    style="@style/Widget.Coffee.IconButton"
+                    android:src="@drawable/ic_plus"
+                    android:layout_marginEnd="10dp"/>
 
-
-            <ImageButton
-                android:id="@+id/removeFromCart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_bin"
-                android:scaleType="centerInside"
-                android:layout_gravity="end"
-                android:background="@drawable/circle_background"
-                android:contentDescription="@string/removeFromCartDesc"
-                card_view:tint="@color/white" />
-
-
-
-
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

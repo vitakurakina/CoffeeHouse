@@ -1,9 +1,5 @@
 package com.example.coffeehouse
 
-import android.Manifest
-import android.R.string
-import android.util.Log
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,40 +51,62 @@ class MenuFragment : Fragment() {
     }
 
     private fun loadMenu() {
-        api.getMenu().enqueue(object : Callback<List<MenuDrinksItem>> {
-            override fun onResponse(call: Call<List<MenuDrinksItem>>, response: Response<List<MenuDrinksItem>>) {
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        adapter.setItems(it)
-                        saveJSON(it)
 
+        val drinksCall = api.getMenuDrinks()
+        val dessertsCall = api.getMenuDesserts()
+
+        drinksCall.enqueue(object : Callback<List<MenuItem>> {
+            override fun onResponse(call: Call<List<MenuItem>>, drinksResp: Response<List<MenuItem>>) {
+
+                dessertsCall.enqueue(object : Callback<List<MenuItem>> {
+                    override fun onResponse(call: Call<List<MenuItem>>, dessertsResp: Response<List<MenuItem>>) {
+
+                        if (!isAdded) return
+
+                        val drinks = drinksResp.body() ?: emptyList()
+                        val desserts = dessertsResp.body() ?: emptyList()
+
+                        val fullMenu = drinks + desserts
+
+                        adapter.setItems(fullMenu)
+                        saveJSON(fullMenu)
                     }
-                }
-            }
-            override fun onFailure(call: Call<List<MenuDrinksItem>>, t: Throwable) {
-                if (context?.isNetworkAvailable() == true){
-                    Toast.makeText(context, "Ошибка загрузки меню с сервера", Toast.LENGTH_SHORT).show()
-                    loadMenuFromJSON()
-                }else {
-                    MaterialAlertDialogBuilder(requireContext())
-                        .setTitle(R.string.alert_title)
-                        .setMessage(R.string.alert_message)
-                        .setNeutralButton(R.string.Okay){_,_->
 
-                        }
-                        .show()
-                }
+                    override fun onFailure(call: Call<List<MenuItem>>, t: Throwable) {
+                        handleFailure()
+                    }
+                })
+            }
+
+            override fun onFailure(call: Call<List<MenuItem>>, t: Throwable) {
+                handleFailure()
             }
         })
     }
 
-    private fun saveJSON(menuList: List<MenuDrinksItem>){
+    private fun handleFailure() {
+        if (!isAdded) return
+
+        val safeContext = context ?: return
+
+        if (safeContext.isNetworkAvailable()) {
+            Toast.makeText(safeContext, R.string.menu_load_error, Toast.LENGTH_SHORT).show()
+            loadMenuFromJSON()
+        } else {
+            MaterialAlertDialogBuilder(safeContext, R.style.CoffeeAlertDialog)
+                .setTitle(R.string.alert_title)
+                .setMessage(R.string.alert_message)
+                .setPositiveButton(R.string.Okay, null)
+                .show()
+        }
+    }
+
+    private fun saveJSON(menuList: List<MenuItem>){
         val gson = Gson()
         val jsonString = gson.toJson(menuList)
         val file = File(requireContext().filesDir, "menu.json")
         file.writeText(jsonString)
-        Toast.makeText(context, "JSON сохранён", Toast.LENGTH_SHORT).show()
-
+        Toast.makeText(context, R.string.json_saved, Toast.LENGTH_SHORT).show()
     }
 
     private fun loadMenuFromJSON() {
@@ -96,11 +114,11 @@ class MenuFragment : Fragment() {
         if (file.exists()) {
             val jsonString = file.readText()
             val gson = Gson()
-            val menuList = gson.fromJson(jsonString, Array<MenuDrinksItem>::class.java).toList()
+            val menuList = gson.fromJson(jsonString, Array<MenuItem>::class.java).toList()
             adapter.setItems(menuList)
-            Toast.makeText(context, "JSON загружен", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.json_loaded, Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Нет данных для офлайн-доступа", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,R.string.no_offline_data, Toast.LENGTH_SHORT).show()
         }
     }
 
