@@ -34,4 +34,23 @@
     <string name="json_loaded">JSON загружен</string>
     <string name="no_offline_data">Нет данных для оффлайн доступа</string>
     <string name="order_number">Заказ №%d</string>
+
+    <string name="userLogin">Логин</string>
+    <string name="userPassword">Пароль</string>
+    <string name="userConfirmPassword">Повторите пароль</string>
+    <string name="signUp">Зарегестрироваться</string>
+    <string name="signIn">Войти</string>
+
+    <string name="passwordsDontMatch">Пароли не совпадают</string>
+    <string name="fillAll">Заполните все поля</string>
+    <string name="loginShorter">Логин должен быть короче</string>
+    <string name="passwordLonger">Пароль должен быть длиннее</string>
+
+    <string name="regSuss">Регистрация успешна</string>
+    <string name="regErr">Ошибка регистрации</string>
+    <string name="errDueReg">Ошибка при регистрации</string>
+
+    <string name="signInSuss">Вход успешен</string>
+    <string name="signInErr">Ошибка входа</string>
+    <string name="errDuesignIn">Ошибка при входе</string>
 </resources>

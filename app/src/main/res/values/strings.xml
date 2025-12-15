@@ -12,7 +12,6 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_theme_switch">To switch the theme</string>
-    <string name="User_name">Name</string>
     <string name="Users_name">User\'s name</string>
     <string name="Phone_number">Phone number</string>
     <string name="MyData">My data</string>
@@ -38,5 +37,26 @@
     <string name="json_loaded">JSON loaded</string>
     <string name="no_offline_data">No data for offline access</string>
     <string name="order_number">Order №%d</string>
+
+    <!--    registration-->
+    <string name="userLogin">Login</string>
+    <string name="userEmail" translatable="false">Email</string>
+    <string name="userPassword">Password</string>
+    <string name="userConfirmPassword">Confirm Password</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+
+    <string name="passwordsDontMatch">Passwords don\'t match</string>
+    <string name="fillAll">Fill all fields</string>
+    <string name="loginShorter">Login has to be shorter</string>
+    <string name="passwordLonger">Password has to be longer</string>
+
+    <string name="regSuss">Registration successful</string>
+    <string name="regErr">Registration Error</string>
+    <string name="errDueReg">Error due registration</string>
+
+    <string name="signInSuss">Registration successful</string>
+    <string name="signInErr">Registration Error</string>
+    <string name="errDuesignIn">Error due registration</string>
 
 </resources>

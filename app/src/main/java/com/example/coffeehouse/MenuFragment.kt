@@ -98,6 +98,7 @@ class MenuFragment : Fragment() {
                 .setMessage(R.string.alert_message)
                 .setPositiveButton(R.string.Okay, null)
                 .show()
+            loadMenuFromJSON()
         }
     }
 

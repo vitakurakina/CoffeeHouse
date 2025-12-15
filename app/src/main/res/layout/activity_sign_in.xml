@@ -11,24 +11,16 @@
     android:layout_centerInParent="true">
 
     <EditText
-        android:id="@+id/loginEditText"
+        android:id="@+id/signInEmailEditText"
         android:layout_width="match_parent"
         android:layout_marginTop="50dp"
-        android:layout_height="50dp"
-        android:autofillHints=""
-        android:hint="@string/userLogin"
-        android:inputType="textPersonName"/>
-
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:autofillHints=""
         android:hint="@string/userEmail"
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/signInPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -36,20 +28,11 @@
         android:hint="@string/userPassword"
         android:inputType="textPassword"/>
 
-    <EditText
-        android:id="@+id/confirmPasswordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:hint="@string/userConfirmPassword"
-        android:inputType="textPassword"/>
-
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/signInButton"
         style="@style/Widget.CoffeeHouse.MaterialButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="@string/signUp"/>
+        android:text="@string/signIn"/>
 </LinearLayout>
