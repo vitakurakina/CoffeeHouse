@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://192.168.31.8:5000/"
+    private const val BASE_URL = "https://soiarnami.pythonanywhere.com/"
 
     val api: GetApi by lazy {
         Retrofit.Builder()
