@@ -11,7 +11,6 @@
 
     <string name="hello_blank_fragment">Привет пустой фрагмент</string>
     <string name="app_theme_switch">Поменять тему приложения</string>
-    <string name="User_name">Имя</string>
     <string name="Users_name">Имя пользователя</string>
     <string name="Phone_number">Номер телефона</string>
     <string name="MyData">Мои данные</string>
@@ -53,4 +52,7 @@
     <string name="signInSuss">Вход успешен</string>
     <string name="signInErr">Ошибка входа</string>
     <string name="errDuesignIn">Ошибка при входе</string>
+
+    <string name="orderSuccess">Заказ оформлен. Начислено бонусов: %1$d</string>
+    <string name="orderErr">Ошибка оформления заказа</string>
 </resources>

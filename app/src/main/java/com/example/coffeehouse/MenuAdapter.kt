@@ -19,10 +19,7 @@ class MenuAdapter(
     class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameText: TextView = view.findViewById(R.id.textName)
         val priceText: TextView = view.findViewById(R.id.textPrice)
-        val descriptionText: TextView = view.findViewById(R.id.textDescription)
-        val infoText: TextView = view.findViewById(R.id.textInfo)
         val imageView: ImageView = view.findViewById(R.id.imageDrink)
-        val infoCategory: TextView = view.findViewById<TextView>(R.id.textCategory)
         val addToCartButton: ImageView = view.findViewById(R.id.addToCart)
     }
 
@@ -37,20 +34,14 @@ class MenuAdapter(
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val item = items[position]
         holder.nameText.text = item.name
-        holder.priceText.text = item.price
-        holder.descriptionText.text = item.description
-        holder.infoCategory.text=item.category
-        holder.infoText.text = item.info
-
+        holder.priceText.text = holder.itemView.context.getString(R.string.itemPrice, item.price)
 
         if (item.image.isNotEmpty()) {
             Glide.with(holder.imageView.context)
                 .load(item.image)
                 .into(holder.imageView)
         } else {
-            holder.imageView.setImageResource(R.drawable.jisung) //Это просто смешная картинка с моим любимым кпоп айдолом Хан Джисоном.
-                                                                // Я подумала что будет очень иронично вставить его фото сюда,
-                                                                // потому что его имя "jisung" и слово "json" произносятся одинакого
+            holder.imageView.setImageResource(R.drawable.jisung)
         }
         holder.addToCartButton.setOnClickListener {
             addToCart(holder.itemView.context, item)

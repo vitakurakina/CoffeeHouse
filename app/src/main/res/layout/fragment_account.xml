@@ -43,19 +43,15 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:paddingBottom="4dp">
-
-            <!-- Первая колонка -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/Users_name"
                 android:layout_weight="1" />
-
-            <!-- Вторая колонка -->
             <TextView
+                android:id="@+id/userDataUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -63,18 +59,44 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/Phone_number"
+                android:text="@string/userEmail"
                 android:layout_weight="1"/>
-
             <TextView
+                android:id="@+id/userDataEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="4dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Delivery address"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/userDataDeliveryAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editUserData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.CoffeeHouse.MaterialButton"
+            android:text="Edit user data"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ordersHistory"
             android:layout_width="match_parent"
@@ -83,56 +105,21 @@
             android:text="@string/orders_history"/>
     </LinearLayout>
 
-    <com.google.android.material.divider.MaterialDivider
+    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="16dp"/>
-
-    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/toSignUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Settings"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:paddingBottom="8dp" />
-
-        <!-- Theme Switch Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingBottom="4dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_theme_switch"
-                android:layout_marginEnd="16dp" />
-
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/theme_switcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/toSignUpButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.CoffeeHouse.MaterialButton"
-            android:text="Sign Up"/>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/toSignInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.CoffeeHouse.MaterialButton"
-            android:text="Sign In"/>
-
-    </LinearLayout>
+        style="@style/Widget.CoffeeHouse.MaterialButton"
+        android:text="@string/signUp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/toSignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.CoffeeHouse.MaterialButton"
+        android:text="@string/signIn"/>
 
 </LinearLayout>

@@ -65,11 +65,14 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
     kapt("com.github.bumptech.glide:compiler:4.15.1")
-    implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-runtime:2.8.4")
+    kapt ("androidx.room:room-compiler:2.8.4")
     kapt("com.github.bumptech.glide:compiler:4.15.1")
     implementation ("androidx.room:room-ktx:2.6.1")
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation ("androidx.core:core-splashscreen:1.0.1")
+    implementation ("com.google.zxing:core:3.5.0")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+
 }

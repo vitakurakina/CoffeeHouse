@@ -19,6 +19,8 @@ class CartAdapter(
     private var items: MutableList<CartItem> = mutableListOf()
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
+    var onCartChanged: (() -> Unit)? = null
+
     class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameText: TextView = view.findViewById(R.id.textName)
         val priceText: TextView = view.findViewById(R.id.textPrice)
@@ -35,13 +37,15 @@ class CartAdapter(
 
     override fun getItemCount(): Int = items.size
 
+
+
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val cartItem = items[position]
         val context = holder.itemView.context
 
 
         holder.nameText.text = cartItem.item.name
-        holder.priceText.text = cartItem.item.price.toString()
+        holder.priceText.text = cartItem.item.price.toString() + " ₽"
         holder.quantityText.text = context.getString(R.string.item_quantity, cartItem.quantity)
 
         if (cartItem.item.image.isNotEmpty()) {
@@ -71,6 +75,7 @@ class CartAdapter(
         }
 
         saveCart(context)
+        onCartChanged?.invoke()
     }
     private fun addOne(context: Context, position: Int){
         var cartItem = items[position]
@@ -87,6 +92,7 @@ class CartAdapter(
                 .show()
         }
         saveCart(context)
+        onCartChanged?.invoke()
     }
 
     private fun saveCart(context: Context) {
@@ -109,6 +115,10 @@ class CartAdapter(
     fun clearItems() {
         items.clear()
         notifyDataSetChanged()
+    }
+
+    fun getTotalPrice(): Int {
+        return items.sumOf { it.item.price * it.quantity }
     }
 
 

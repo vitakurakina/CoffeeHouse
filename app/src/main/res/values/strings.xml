@@ -58,5 +58,7 @@
     <string name="signInSuss">Registration successful</string>
     <string name="signInErr">Registration Error</string>
     <string name="errDuesignIn">Error due registration</string>
-
+    <string name="orderSuccess">Order placed. Bonuses awarded: %d</string>
+    <string name="orderErr">Order placing error</string>
+    <string name="itemPrice" translatable="false">%d ₽</string>
 </resources>

@@ -53,8 +53,7 @@ class AuthActivity : AppCompatActivity(){
 
     private fun createUser(login: String, email: String, password: String) {
 
-        val request = SignUpRequest(login, email, password
-        )
+        val request = SignUpRequest(login, email, password)
 
         RetrofitInstance.api.signUp(request)
             .enqueue(object : retrofit2.Callback<AuthResponse> {

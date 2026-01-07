@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeehouse.network.RetrofitInstance.api
 import retrofit2.Call
@@ -16,6 +15,7 @@ import retrofit2.Response
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import java.io.File
@@ -24,7 +24,6 @@ class MenuFragment : Fragment() {
 
     private lateinit var adapter: MenuAdapter
 
-
     fun Context.isNetworkAvailable(): Boolean {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val capabilities = cm.getNetworkCapabilities(cm.activeNetwork) ?: return false
@@ -32,7 +31,6 @@ class MenuFragment : Fragment() {
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +41,10 @@ class MenuFragment : Fragment() {
 
         adapter = MenuAdapter()
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = GridLayoutManager(
+            requireContext(),
+            2
+        )
 
         loadMenu()
 
@@ -69,7 +70,7 @@ class MenuFragment : Fragment() {
                         val fullMenu = drinks + desserts
 
                         adapter.setItems(fullMenu)
-                        saveJSON(fullMenu)
+                        //saveJSON(fullMenu)
                     }
 
                     override fun onFailure(call: Call<List<MenuItem>>, t: Throwable) {
@@ -91,14 +92,14 @@ class MenuFragment : Fragment() {
 
         if (safeContext.isNetworkAvailable()) {
             Toast.makeText(safeContext, R.string.menu_load_error, Toast.LENGTH_SHORT).show()
-            loadMenuFromJSON()
+            //loadMenuFromJSON()
         } else {
             MaterialAlertDialogBuilder(safeContext, R.style.CoffeeAlertDialog)
                 .setTitle(R.string.alert_title)
                 .setMessage(R.string.alert_message)
                 .setPositiveButton(R.string.Okay, null)
                 .show()
-            loadMenuFromJSON()
+            //loadMenuFromJSON()
         }
     }
 

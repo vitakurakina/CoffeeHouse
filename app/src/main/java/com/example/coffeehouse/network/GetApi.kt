@@ -2,6 +2,8 @@ package com.example.coffeehouse.network
 
 import com.example.coffeehouse.SignInRequest
 import com.example.coffeehouse.AuthResponse
+import com.example.coffeehouse.BonusRequest
+import com.example.coffeehouse.BonusResponse
 import com.example.coffeehouse.MenuItem
 import com.example.coffeehouse.SignUpRequest
 import retrofit2.Call
@@ -11,10 +13,10 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface GetApi {
-    @GET("/drinks")
+    @GET("drinks")
     fun getMenuDrinks(): Call<List<MenuItem>>
 
-    @GET("/desserts")
+    @GET("desserts")
     fun getMenuDesserts(): Call<List<MenuItem>>
 
     @POST("signup")
@@ -25,5 +27,9 @@ interface GetApi {
 
     @GET("/me")
     fun getMe(@Header("Authorization") token: String): Call<AuthResponse>
+
+    @POST("add-bonus")
+    suspend fun addBonus(@Body body: BonusRequest): BonusResponse
+
 
 }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.example.coffeehouse.network.RetrofitInstance
 
+
 class SignInActivity : AppCompatActivity() {
     private lateinit var emailTextEdit: EditText
     private lateinit var passwordEditText: EditText
@@ -47,8 +48,9 @@ class SignInActivity : AppCompatActivity() {
                         val prefs = getSharedPreferences("auth", MODE_PRIVATE)
                         prefs.edit {
                             putString("login", auth?.login)
-                            putInt("user_id", auth?.user_id ?: -1)
-                            putString("qr_token", auth?.qr_token)
+                            putInt("userId", auth?.userId ?: -1)
+                            putString("qrToken", auth?.qrToken)
+                            putInt("bonusAmount", auth?.bonusAmount ?: 0)
                         }
 
                         Toast.makeText(this@SignInActivity, R.string.signInSuss, Toast.LENGTH_SHORT).show()
